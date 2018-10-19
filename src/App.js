@@ -11,9 +11,27 @@ The instructions are included in the `instructions.md` file.
 
 const users = [{ username: 'Amy' }, { username: 'John' }];
 
-
 class App extends Component {
 
+  constructor(props){
+    super(props);
+    this.addMessage = this.addMessage.bind(this);
+  }
+
+  state = {
+    messages: [
+      { username: 'Amy', text: 'Hi, Jon!' },
+      { username: 'Amy', text: 'How are you?' },
+      { username: 'John', text: 'Hi, Amy! Good, you?' },
+    ]
+  }
+
+  addMessage = (message) => {
+    console.log(message);
+    this.setState(currState => ({
+      messages: [...currState.messages, message],
+    }));
+  }  
 
   render() {
     return (
@@ -23,8 +41,8 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <div className="container">
-          <Chat users={users[0]} />
-          <Chat users={users[1]}  />
+          <Chat user={users[0]} messages={this.state.messages} addMessage={this.addMessage} />
+          <Chat user={users[1]} messages={this.state.messages} addMessage={this.addMessage} />
         </div>
       </div>
     );

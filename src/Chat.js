@@ -11,21 +11,26 @@ const messages = [
 
 class Chat extends Component{
 
+    constructor(props){
+        super(props);    
+        this.updateMessage = this.updateMessage.bind(this);    
+    }
 
+    updateMessage = (message) => {
+        this.props.addMessage(message);11
+    }
 
     render(){
         return(
         <div className="chat-window">
             <h2>Super Awesome Chat</h2>
-            <div className="name sender">{this.props.users.username}</div>
+            <div className="name sender">{this.props.user.username}</div>
 
-            <MessageList messages={messages} users={this.props.users} />  
-            <ChatForm />    
+            <MessageList messages={this.props.messages} users={this.props.user} />  
+            <ChatForm updateMessage={this.updateMessage} user={this.props.user}/>    
         </div>
         );
-
     }
-
 }
 
 

@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class MessageList extends Component{
 
     render(){
-        console.log(this.props);
         return(
             <ul className="message-list">
                 {this.props.messages.map((message, index) => (

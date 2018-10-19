@@ -7,14 +7,33 @@ class ChatForm extends Component{
     allowed to submit.
     */
     isDisabled = () => {
-        return false;
-    };    
-        
+        return this.state.text.trim() === '';
+    };  
+
+    handleChange = (event) => {
+        this.setState({text: event.target.value});
+    }
+
+    constructor(props){
+        super(props);
+        this.sendMessage = this.sendMessage.bind(this);        
+    }
+    
+    state = {
+        text: '',       
+    }
+
+    sendMessage = (event) =>{
+        event.preventDefault();
+        this.props.updateMessage({username: this.props.user.username, text: this.state.text})
+
+    }
+
     render(){
         return(
            <div className='ChatForm'>
-                <form className="input-group">
-                    <input type="text" className="form-control" placeholder="Enter your message..." />
+                <form className="input-group" onSubmit={this.sendMessage}>
+                    <input type="text" className="form-control" onChange={this.handleChange} placeholder="Enter your message..." />
                     <div className="input-group-append">
                         <button className="btn submit-button" disabled={this.isDisabled()}>
                             SEND
