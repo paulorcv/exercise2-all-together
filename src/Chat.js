@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import MessageList from './MessageList';
 import ChatForm from './ChatForm';
+import PropTypes from 'prop-types';
+
 
 const messages = [
     { username: 'Amy', text: 'Hi, Jon!' },
@@ -32,6 +34,12 @@ class Chat extends Component{
         );
     }
 }
+
+Chat.propTypes = {
+    addMessage: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+    messages: PropTypes.array.isRequired,
+  };
 
 
 export default Chat;

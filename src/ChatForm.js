@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class ChatForm extends Component{
 
@@ -45,5 +46,11 @@ class ChatForm extends Component{
     }
 
 }
+
+ChatForm.propTypes = {
+    updateMessage: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+  };
+
 
 export default ChatForm;
