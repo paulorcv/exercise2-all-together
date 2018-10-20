@@ -27,7 +27,6 @@ class App extends Component {
   }
 
   addMessage = (message) => {
-    console.log(message);
     this.setState(currState => ({
       messages: [...currState.messages, message],
     }));

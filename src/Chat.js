@@ -4,13 +4,6 @@ import ChatForm from './ChatForm';
 import PropTypes from 'prop-types';
 
 
-const messages = [
-    { username: 'Amy', text: 'Hi, Jon!' },
-    { username: 'Amy', text: 'How are you?' },
-    { username: 'John', text: 'Hi, Amy! Good, you?' },
-];
-
-
 class Chat extends Component{
 
     constructor(props){
@@ -19,7 +12,7 @@ class Chat extends Component{
     }
 
     updateMessage = (message) => {
-        this.props.addMessage(message);11
+        this.props.addMessage(message);
     }
 
     render(){
